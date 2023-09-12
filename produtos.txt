@@ -1,0 +1,10 @@
+01 1920000 porsche_GT3RS
+02 655000 porsche_panamera_4E_hybrid  
+03 40500000 mcLaren_speedtail
+04 10400000 astonMartin_valkyrie
+05 10000000 mcLaren_senna
+06 12800000 mercedes_amgOne
+07 20000000 koenigsegg_gemera
+08 48735314 bugatti_chiron
+09 24300000 ferrari_laFerrari
+10 12000000 pagani_zondaR
