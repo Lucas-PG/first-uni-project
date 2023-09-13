@@ -12,16 +12,16 @@ Log de Vendas:
 
 
 Catalogo de Produtos:
-[0] 01 1920000 porsche_GT3RS
-[1] 02 655000 porsche_panamera_4E_hybrid
-[2] 03 40500000 mcLaren_speedtail
-[3] 04 10400000 astonMartin_valkyrie
-[4] 05 10000000 mcLaren_senna
-[5] 06 12800000 mercedes_amgOne
-[6] 07 20000000 koenigsegg_gemera
-[7] 08 48735314 bugatti_chiron
-[8] 09 24300000 ferrari_laFerrari
-[9] 10 12000000 pagani_zondaR
+[0] 01 1920000.00 porsche_GT3RS
+[1] 02 655000.00 porsche_panamera_4E_hybrid
+[2] 03 40500000.00 mcLaren_speedtail
+[3] 04 10400000.00 astonMartin_valkyrie
+[4] 05 10000000.00 mcLaren_senna
+[5] 06 12800000.00 mercedes_amgOne
+[6] 07 20000000.00 koenigsegg_gemera
+[7] 08 48735312.00 bugatti_chiron
+[8] 09 24300000.00 ferrari_laFerrari
+[9] 10 12000000.00 pagani_zondaR
 
 
 Lista de Vendedores:
@@ -31,4 +31,25 @@ Lista de Vendedores:
 [3] 4 Chris
 [4] 5 Rodrigo
 
-Total geral vendido: R$684050942.00
+
+Total geral vendido: R$684050944.00
+
+Total de vendas de cada produto:
+Produto 01 (porsche_GT3RS): R$13440000.00
+Produto 02 (porsche_panamera_4E_hybrid): R$7205000.00
+Produto 03 (mcLaren_speedtail): R$121500000.00
+Produto 04 (astonMartin_valkyrie): R$114400000.00
+Produto 05 (mcLaren_senna): R$50000000.00
+Produto 06 (mercedes_amgOne): R$102400000.00
+Produto 07 (koenigsegg_gemera): R$20000000.00
+Produto 08 (bugatti_chiron): R$146205936.00
+Produto 09 (ferrari_laFerrari): R$72900000.00
+Produto 10 (pagani_zondaR): R$36000000.00
+
+
+Total de vendas de cada vendedor:
+Vendedor 1 (Andrew): R$124800000.00
+Vendedor 2 (David): R$187965632.00
+Vendedor 3 (Sam): R$168615312.00
+Vendedor 4 (Chris): R$98160000.00
+Vendedor 5 (Rodrigo): R$104510000.00
