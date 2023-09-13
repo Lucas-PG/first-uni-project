@@ -1,0 +1,1 @@
+  print_products(cars, "totais.txt");

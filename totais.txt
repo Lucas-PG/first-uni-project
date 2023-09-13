@@ -1,0 +1,34 @@
+Log de Vendas:
+[0] 3 01 4
+[1] 2 10 2
+[2] 5 06 3
+[3] 5 09 1
+[4] 2 09 2
+[5] 2 08 2
+[6] 4 07 1
+[7] 4 04 6
+[8] 3 03 2
+[9] 2 02 9
+
+
+Catalogo de Produtos:
+[0] 01 1920000 porsche_GT3RS
+[1] 02 655000 porsche_panamera_4E_hybrid
+[2] 03 40500000 mcLaren_speedtail
+[3] 04 10400000 astonMartin_valkyrie
+[4] 05 10000000 mcLaren_senna
+[5] 06 12800000 mercedes_amgOne
+[6] 07 20000000 koenigsegg_gemera
+[7] 08 48735314 bugatti_chiron
+[8] 09 24300000 ferrari_laFerrari
+[9] 10 12000000 pagani_zondaR
+
+
+Lista de Vendedores:
+[0] 1 Andrew
+[1] 2 David
+[2] 3 Sam
+[3] 4 Chris
+[4] 5 Rodrigo
+
+Total geral vendido: R$684050942.00

@@ -1,5 +1,5 @@
 01 1920000 porsche_GT3RS
-02 655000 porsche_panamera_4E_hybrid  
+02 655000 porsche_panamera_4E_hybrid
 03 40500000 mcLaren_speedtail
 04 10400000 astonMartin_valkyrie
 05 10000000 mcLaren_senna
