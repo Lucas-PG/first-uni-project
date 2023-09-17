@@ -2,10 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 
+//Números de produtos, vendedores e vendas, respectivamente.
 #define PRODUCTS_NUM 10
 #define SELLERS_NUM 5
 #define SALES_NUM 20
 
+
+//Cria protótipos de objetos para utilizar mais tarde
 typedef struct
 {
   char code[3];
@@ -41,31 +44,31 @@ typedef struct
   float total_sold;
 } Per_Seller;
 
-// cria objeto para produtos
+// cria objeto para produtos, a partir dos dados do arquivo de texto
 void create_products(Product given_products[PRODUCTS_NUM], char file_name[])
 {
-  FILE *products_file = fopen(file_name, "r");
-  char buffer_products[255];
-  int products_index = 0;
+  FILE *products_file = fopen(file_name, "r"); //abre o arquivo de texto
+  char buffer_products[255]; //cria string vazia
+  int products_index = 0; //indica o indíce do objeto
 
-  while (fgets(buffer_products, 255, products_file) != NULL)
+  while (fgets(buffer_products, 255, products_file) != NULL) //enquanto não houver uma linha vazia
   {
-    char *current_code = strtok(buffer_products, " ");
-    char *current_price_str = strtok(NULL, " ");
-    char *current_description = strtok(NULL, "\n");
+    char *current_code = strtok(buffer_products, " "); //pega o código
+    char *current_price_str = strtok(NULL, " "); //pega o preço
+    char *current_description = strtok(NULL, "\n"); //pega a descrição
 
-    strncpy(given_products[products_index].code, current_code, sizeof(given_products[products_index].code));
-    strncpy(given_products[products_index].description, current_description, sizeof(given_products[products_index].description));
-    given_products[products_index].price = atoi(current_price_str);
+    strncpy(given_products[products_index].code, current_code, sizeof(given_products[products_index].code)); //adiciona o código ao objeto, no indice "product_index"
+    strncpy(given_products[products_index].description, current_description, sizeof(given_products[products_index].description)); //adiciona descrição
+    given_products[products_index].price = atof(current_price_str); //adiciona preço
     products_index++;
   };
 }
 
-// cria objeto para vendedores
+// cria objeto para vendedores, a partir dos dados do arquivo de texto
 void create_sellers(Seller given_sellers[SELLERS_NUM], char file_name[255])
 {
-  FILE *sellers_file = fopen(file_name, "r");
-  char buffer_sellers[255];
+  FILE *sellers_file = fopen(file_name, "r"); //identico ao código de create_products
+  char buffer_sellers[255];                   //mas para os dados de vendedores
   int sellers_index = 0;
 
   while (fgets(buffer_sellers, 255, sellers_file) != NULL)
@@ -82,7 +85,7 @@ void create_sellers(Seller given_sellers[SELLERS_NUM], char file_name[255])
 // cria objeto para vendas
 void create_sales(Sale given_sales[SALES_NUM], char file_name[255])
 {
-  FILE *sales_file = fopen(file_name, "r");
+  FILE *sales_file = fopen(file_name, "r"); //idem
   char buffer_sales[255];
   int sales_index = 0;
 
@@ -94,38 +97,41 @@ void create_sales(Sale given_sales[SALES_NUM], char file_name[255])
 
     strncpy(given_sales[sales_index].seller_code, current_seller_code, sizeof(given_sales[sales_index].seller_code));
     strncpy(given_sales[sales_index].product_code, current_product_code, sizeof(given_sales[sales_index].product_code));
-    given_sales[sales_index].units_sold = atoi(current_units_sold);
+    given_sales[sales_index].units_sold = atof(current_units_sold);
     sales_index++;
   };
 }
 
+//calcula o total vendido em todas as vendas, a partir de sales e products
 float total_sold(Sale sales[SALES_NUM], Product products[PRODUCTS_NUM])
 {
   float total = 0;
-  for (int i = 0; i < SALES_NUM; i++)
+  for (int i = 0; i < SALES_NUM; i++) 
   {
     for (int j = 0; j < PRODUCTS_NUM; j++)
     {
-      if (strcmp(sales[i].product_code, products[j].code) == 0)
+      if (strcmp(sales[i].product_code, products[j].code) == 0) //acha o produto vendido na venda
       {
-        total += (float)sales[i].units_sold * products[j].price;
+        total += (float)sales[i].units_sold * products[j].price; //adiciona o total da venda
       }
     }
   }
   return total;
 }
 
+//calcula o total vendido por produto
 void sales_per_product(Sale sales[SALES_NUM], Product products[PRODUCTS_NUM], Per_Product per_product[PRODUCTS_NUM])
 {
-
-  for (int i = 0; i < PRODUCTS_NUM; i++)
-  {
+  //adiciona ao objeto per_product o código, descrição, preço e inicia o total como 0.
+  for (int i = 0; i < PRODUCTS_NUM; i++) 
+  {                                      
     strncpy(per_product[i].product_code, products[i].code, sizeof(per_product[i].product_code));
     strncpy(per_product[i].description, products[i].description, sizeof(per_product[i].description));
     per_product[i].price = products[i].price;
     per_product[i].total_sold = 0;
   }
 
+  //acha o produto vendido na venda em questão e adiciona o valor ao total.
   for (int i = 0; i < SALES_NUM; i++)
   {
     for (int j = 0; j < PRODUCTS_NUM; j++)
@@ -138,16 +144,19 @@ void sales_per_product(Sale sales[SALES_NUM], Product products[PRODUCTS_NUM], Pe
   }
 }
 
+//identico ao sales_per_product, mas para vendedores
 void sales_per_seller(Sale sales[SALES_NUM], Seller sellers[SELLERS_NUM], Per_Seller per_seller[SELLERS_NUM], Product products[PRODUCTS_NUM])
 {
 
-  for (int i = 0; i < SELLERS_NUM; i++)
+  //adiciona código, descrição e inicia o total como 0.
+  for (int i = 0; i < SELLERS_NUM; i++) 
   {
     strncpy(per_seller[i].seller_code, sellers[i].code, sizeof(per_seller[i].seller_code));
     strncpy(per_seller[i].seller_description, sellers[i].name, sizeof(per_seller[i].seller_description));
     per_seller[i].total_sold = 0;
   }
 
+  //acha o vendedor e o produto, calcula o total da compra e adiciona ao total vendido pelo vendedor. 
   for (int i = 0; i < SALES_NUM; i++)
   {
     for (int j = 0; j < SELLERS_NUM; j++)
@@ -166,6 +175,7 @@ void sales_per_seller(Sale sales[SALES_NUM], Seller sellers[SELLERS_NUM], Per_Se
   }
 }
 
+//função para dar print nos dados desejados
 void print_output_file(Sale sales[SALES_NUM], Product products[PRODUCTS_NUM], Seller sellers[SELLERS_NUM], char file_name[255], float total, Per_Product per_product[PRODUCTS_NUM], Per_Seller per_seller[SELLERS_NUM])
 {
   FILE *output_file = fopen(file_name, "w");
@@ -203,7 +213,7 @@ void print_output_file(Sale sales[SALES_NUM], Product products[PRODUCTS_NUM], Se
 
 int main()
 {
-
+  //cria os objetos com os dados e chama as funções desejadas
   Product cars[PRODUCTS_NUM];
   create_products(cars, "produtos.txt");
 
